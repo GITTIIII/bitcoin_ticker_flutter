@@ -4,7 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
           primaryColor: Colors.lightBlue,
           scaffoldBackgroundColor: Colors.white),
-      home: PriceScreen(),
+      home: const PriceScreen(),
     );
   }
 }

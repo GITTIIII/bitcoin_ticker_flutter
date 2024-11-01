@@ -2,27 +2,28 @@ import 'package:flutter/material.dart';
 import "coin_data.dart";
 import "package:flutter/cupertino.dart";
 import "dart:io" show Platform;
-import "coin_data.dart";
 
 class PriceScreen extends StatefulWidget {
+  const PriceScreen({super.key});
+
   @override
-  _PriceScreenState createState() => _PriceScreenState();
+  PriceScreenState createState() => PriceScreenState();
 }
 
-class _PriceScreenState extends State<PriceScreen> {
+class PriceScreenState extends State<PriceScreen> {
   String selectCurrency = "USD";
   Map<String, dynamic> dataMap = {};
   CoinData coin = CoinData();
-  var dataBTC;
-  var dataETH;
-  var dataLTC;
+  dynamic dataBTC;
+  dynamic dataETH;
+  dynamic dataLTC;
   DropdownButton getAndriodDropdown() {
     return DropdownButton(
       value: selectCurrency,
       items: currenciesList.map((currency) {
         return DropdownMenuItem(
-          child: Center(child: Text(currency)),
           value: currency,
+          child: Center(child: Text(currency)),
         );
       }).toList(),
       onChanged: (value) => setState(() {
@@ -37,8 +38,8 @@ class _PriceScreenState extends State<PriceScreen> {
       itemExtent: 25.0,
       children: currenciesList.map((currency) {
         return DropdownMenuItem(
-          child: Center(child: Text(currency)),
           value: currency,
+          child: Center(child: Text(currency)),
         );
       }).toList(),
       onSelectedItemChanged: (index) => setState(() {
@@ -76,11 +77,11 @@ class _PriceScreenState extends State<PriceScreen> {
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
+          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
           child: Text(
             '1 $crypto = ${rate != null ? rate.toStringAsFixed(0) : 'N/A'}  $selectCurrency',
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20.0,
               color: Colors.white,
             ),
@@ -100,7 +101,7 @@ class _PriceScreenState extends State<PriceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('🤑 Coin Ticker'),
+        title: const Text('🤑 Coin Ticker'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,7 +118,7 @@ class _PriceScreenState extends State<PriceScreen> {
           Container(
               height: 150.0,
               alignment: Alignment.center,
-              padding: EdgeInsets.only(bottom: 30.0),
+              padding: const EdgeInsets.only(bottom: 30.0),
               color: Colors.lightBlue,
               child: Platform.isIOS ? getIosPicker() : getAndriodDropdown()),
         ],

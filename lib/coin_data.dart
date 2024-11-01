@@ -36,7 +36,7 @@ const List<String> cryptoList = [
 ];
 
 class CoinData {
-  var data;
+  dynamic data;
   Future<dynamic> getExchangeRate(String crypto, String selectCurrency) async {
     var url = Uri.parse(
         "$coinApiURL/$crypto/$selectCurrency?apiKey=${dotenv.env['COIN_API_KEY']}");
